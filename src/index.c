@@ -161,6 +161,13 @@ int main(){
                     scanf("%d", &id_adherent);
                     supprimer_adherent(&mysql, id_adherent);
                     break;
+                
+                /**
+                    * Emprunter un livre
+                    * L'utilisateur va entrer l'ID de l'adherent et l'ID du livre
+                    * Puis on va appeler la fonction emprunter_livre()
+                    * Pour emprunter le livre à l'adherent
+                */
                 case 7:
                     int id_livre_emprunt;
                     int id_adherent_emprunt;

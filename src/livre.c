@@ -12,13 +12,14 @@
 #include "livre.h"
 
 /**
- * @brief Fonction d'ajout d'un livre dans la base de données
- * On verifie d'
- * @param conn 
- * @param titre 
- * @param auteur 
- * @param annee 
- * @param nbre_exemplaires_disponibles 
+    * @brief Fonction d'ajout d'un livre dans la base de données
+    * On verifie d'abord que la table livres existe, si elle n'existe pas, on la crée
+    * Puis on ajoute le livre
+    * @param conn pointeur de connexion à la base de données
+    * @param titre titre du livre
+    * @param auteur nom de l'auteur du livre
+    * @param annee anneé de parution du livre
+    * @param nbre_exemplaires_disponibles nombre d'exemplaires disponibles du livre
  */
 void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5], int nbre_exemplaires_disponibles){
     char requete[1000];
@@ -47,6 +48,11 @@ void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5]
     }
 }
 
+/**
+    * @brief Fonction d'affichage de la liste des livres
+    * Cette fonction affiche la liste des livres
+    * @param conn pointeur de connexion à la base de données
+*/
 void afficher_livres(MYSQL* conn){
     if(mysql_query(conn, "SELECT * FROM livres")){
         if(mysql_errno(conn) == 1146){
@@ -68,6 +74,13 @@ void afficher_livres(MYSQL* conn){
     }
 }
 
+/**
+    * @brief Fonction de suppression d'un livre
+    * On verifie d'abord que la table livres existe, si elle n'existe pas, on affiche un message d'erreur
+    * Sinon on supprime le livre
+    * @param conn pointeur de connexion à la base de données
+    * @param id_livre identifiant du livre à supprimer
+*/
 void supprimer_livre(MYSQL* conn, int id_livre){
     char requete[1000];
     sprintf(requete, "DELETE FROM livres WHERE id = %d", id_livre);
@@ -82,6 +95,16 @@ void supprimer_livre(MYSQL* conn, int id_livre){
     }
 }
 
+/**
+    * @brief Fonction d'emprunt d'un livre
+    * On verifie d'abord que le livre a suffisant d'exemplaires disponibles pour etre emprunté
+    * Si c'est le cas, on verifie que la table emprunts existe
+    * Si elle n'existe pas, on la créee puis on emprunte le livre
+    * On n'oublie pas de decrementer le nombre d'exemplaires disponibles du livre
+    * @param conn 
+    * @param id_livre_emprunt 
+    * @param id_adherent_emprunt 
+*/
 void emprunter_livre(MYSQL* conn, int id_livre_emprunt, int id_adherent_emprunt){
     time_t timestamp = time(NULL);
     struct tm *date = localtime(&timestamp);
