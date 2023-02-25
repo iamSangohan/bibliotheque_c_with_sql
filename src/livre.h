@@ -1,3 +1,11 @@
+/**
+    * @file livre.h
+    * @author iamSangohan (MENSAH Luc Germain)
+    * @date 2023-02-25
+    * @version 0.1
+    * Déclaration des fonctions de gestion des livres
+*/
+
 #ifndef LIVRE_H
     #define LIVRE_H
     #include <mysql/mysql.h>

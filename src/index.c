@@ -7,6 +7,7 @@
 */
 
 #include "livre.h"
+#include "adherent.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -99,6 +100,16 @@ int main(){
                     supprimer_livre(&mysql, id_livre);
                     break;
                 case 4:
+                    char nom_adherent[50], prenom_adherent[100], adresse_adherent[100], telephone_adherent[15];
+                    printf("Nom de l'adherent : ");
+                    scanf("%s", nom_adherent);
+                    printf("\nPrenom de l'adherent : ");
+                    scanf("%s", prenom_adherent);
+                    printf("\nAdresse de l'adherent : ");
+                    scanf("%s", adresse_adherent);
+                    printf("\nTelephone de l'adherent : ");
+                    scanf("%s", telephone_adherent);
+                    ajouter_adherent(&mysql, nom_adherent, prenom_adherent, adresse_adherent, telephone_adherent);
                     break;
                 case 5:
                     break;
