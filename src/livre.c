@@ -46,3 +46,17 @@ void afficher_livres(MYSQL* conn){
         }
     }
 }
+
+void supprimer_livre(MYSQL* conn, int id_livre){
+    char requete[1000];
+    sprintf(requete, "DELETE FROM livres WHERE id = %d", id_livre);
+    if (mysql_query(conn, requete)) {
+        if (mysql_errno(conn) == 1146) {
+            printf("La table livres n'existe pas\n");
+        } else {
+            printf("Erreur lors de la suppression du livre : %s\n", mysql_error(conn));
+        }
+    } else {
+        printf("Le livre a été supprimé avec succès.\n");
+    }
+}

@@ -19,4 +19,12 @@
         * @param conn Pointeur de connexion à la base de données
     */
     void afficher_livres(MYSQL* conn);
+
+    /**
+        * @fn void supprimer_livre(MYSQL* conn, int id_livre)
+        * @brief Fonction de suppression d'un livre de la base de données
+        * @param conn Pointeur de connexion à la base de données
+        * @param id_livre ID du livre à supprimer
+    */
+    void supprimer_livre(MYSQL* conn, int id_livre);
 #endif // LIVRE_H

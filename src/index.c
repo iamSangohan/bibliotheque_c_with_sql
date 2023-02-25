@@ -72,7 +72,7 @@ int main(){
 
             printf("--------------------\n");
             printf("Option : ");
-            scanf("%d", &option);
+            scanf("%d\n", &option);
 
             switch (option){
                 case 1:
@@ -92,6 +92,11 @@ int main(){
                     afficher_livres(&mysql);
                     break;
                 case 3:
+                    int id_livre;
+                    afficher_livres(&mysql);
+                    printf("Saisissez l'ID du livre à supprimer : ");
+                    scanf("%d", &id_livre);
+                    supprimer_livre(&mysql, id_livre);
                     break;
                 case 4:
                     break;
