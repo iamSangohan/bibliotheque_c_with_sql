@@ -147,7 +147,19 @@ int main(){
                 case 5:
                     afficher_adherents(&mysql);
                     break;
+
+                /**
+                    * Supprimer un adherent
+                    * L'utilisateur va entrer l'ID de l'adherent à supprimer
+                    * Puis on va appeler la fonction supprimer_adherent()
+                    * Pour supprimer l'adherent de la base de données
+                */
                 case 6:
+                    int id_adherent;
+                    afficher_adherents(&mysql);
+                    printf("Saisissez l'ID de l'adherent à supprimer : ");
+                    scanf("%d", &id_adherent);
+                    supprimer_adherent(&mysql, id_adherent);
                     break;
                 case 7:
                     break;

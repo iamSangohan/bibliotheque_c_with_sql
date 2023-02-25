@@ -45,3 +45,17 @@ void afficher_adherents(MYSQL *con){
         }
     }
 }
+
+void supprimer_adherent(MYSQL *con, int id_adherent){
+    char requete[1000];
+    sprintf(requete, "DELETE FROM adherents WHERE id = %d", id_adherent);
+    if(mysql_query(con, requete)){
+        if(mysql_errno(con) == 1146){
+            printf("La table adherents n'existe pas\n");
+        }else{
+            printf("Erreur lors de la suppression de l'adhérent : %s\n", mysql_error(con));
+        }
+    }else{
+        printf("Adhérent (%d) supprimé avec succès\n", id_adherent);
+    }
+}

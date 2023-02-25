@@ -28,4 +28,12 @@
      */
     void afficher_adherents(MYSQL *conn);
 
+    /**
+        * @fn supprimer_adherent
+        * @param conn Pointeur de connexion à la base de données
+        * @param id_adherent ID de l'adherent à supprimer
+        * @brief Fonction pour supprimer un adherent
+    */
+    void supprimer_adherent(MYSQL *conn, int id_adherent);
+
 #endif // ADHERENT_H
