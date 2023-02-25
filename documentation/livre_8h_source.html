@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>BIBLIOTECH:  Fichier source de src/livre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">BIBLIOTECH
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">livre.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="livre_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef LIVRE_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">    #define LIVRE_H</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">    #include &lt;mysql/mysql.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="livre_8h.html#a0d672174ac156c1b290767b0369cfb46">ajouter_livre</a>(MYSQL* conn, <span class="keywordtype">char</span> titre[100], <span class="keywordtype">char</span> auteur[100], <span class="keywordtype">char</span> annee[5], <span class="keywordtype">int</span> nbre_exemplaires_disponibles);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="livre_8h.html#a1f87da9aa4935b2a4ab6f2ad32b2c965">afficher_livres</a>(MYSQL* conn);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="livre_8h.html#ac6c814385190ad02d709335864834046">supprimer_livre</a>(MYSQL* conn, <span class="keywordtype">int</span> id_livre);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="livre_8h.html#ae6473380ea0e2335b58f52882414803a">emprunter_livre</a>(MYSQL* conn, <span class="keywordtype">int</span> id_livre_emprunt, <span class="keywordtype">int</span> id_adherent_emprunt);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif </span><span class="comment">// LIVRE_H</span></div>
+<div class="ttc" id="alivre_8h_html_a0d672174ac156c1b290767b0369cfb46"><div class="ttname"><a href="livre_8h.html#a0d672174ac156c1b290767b0369cfb46">ajouter_livre</a></div><div class="ttdeci">void ajouter_livre(MYSQL *conn, char titre[100], char auteur[100], char annee[5], int nbre_exemplaires_disponibles)</div><div class="ttdoc">Fonction d'ajout d'un livre dans la base de données On verifie d'abord que la table livres existe,...</div><div class="ttdef"><b>Definition:</b> livre.c:24</div></div>
+<div class="ttc" id="alivre_8h_html_a1f87da9aa4935b2a4ab6f2ad32b2c965"><div class="ttname"><a href="livre_8h.html#a1f87da9aa4935b2a4ab6f2ad32b2c965">afficher_livres</a></div><div class="ttdeci">void afficher_livres(MYSQL *conn)</div><div class="ttdoc">Fonction d'affichage de la liste des livres Cette fonction affiche la liste des livres.</div><div class="ttdef"><b>Definition:</b> livre.c:56</div></div>
+<div class="ttc" id="alivre_8h_html_ac6c814385190ad02d709335864834046"><div class="ttname"><a href="livre_8h.html#ac6c814385190ad02d709335864834046">supprimer_livre</a></div><div class="ttdeci">void supprimer_livre(MYSQL *conn, int id_livre)</div><div class="ttdoc">Fonction de suppression d'un livre On verifie d'abord que la table livres existe, si elle n'existe pa...</div><div class="ttdef"><b>Definition:</b> livre.c:84</div></div>
+<div class="ttc" id="alivre_8h_html_ae6473380ea0e2335b58f52882414803a"><div class="ttname"><a href="livre_8h.html#ae6473380ea0e2335b58f52882414803a">emprunter_livre</a></div><div class="ttdeci">void emprunter_livre(MYSQL *conn, int id_livre_emprunt, int id_adherent_emprunt)</div><div class="ttdoc">Fonction d'emprunt d'un livre On verifie d'abord que le livre a suffisant d'exemplaires disponibles p...</div><div class="ttdef"><b>Definition:</b> livre.c:108</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>
