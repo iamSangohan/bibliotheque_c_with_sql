@@ -13,4 +13,10 @@
     */
     void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5], int nbre_exemplaires_disponibles);
 
+    /**
+        * @fn void afficher_livres(MYSQL* conn)
+        * @brief Fonction d'affichage des livres de la base de données
+        * @param conn Pointeur de connexion à la base de données
+    */
+    void afficher_livres(MYSQL* conn);
 #endif // LIVRE_H

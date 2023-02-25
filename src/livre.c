@@ -25,3 +25,24 @@ void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5]
         }
     }
 }
+
+void afficher_livres(MYSQL* conn){
+    if(mysql_query(conn, "SELECT * FROM livres")){
+        if(mysql_errno(conn) == 1146){
+            printf("La table livres n'existent pas\n");
+        }
+    }else{
+        MYSQL_RES* result = mysql_store_result(conn);
+        MYSQL_ROW row;
+        int nbre_lignes = mysql_num_rows(result);
+        if(nbre_lignes == 0){
+            printf("Aucun livre n'a été ajouté\n");
+        }else{
+            printf("Liste des livres\n");
+            printf("ID\tTitre\tAuteur\tAnnée\tNb d'exemplaires dispo\n");
+            while(row = mysql_fetch_row(result)){
+                printf("%s\t%s\t%s\t%s\t%s\n", row[0], row[1], row[2], row[3], row[4]);
+            }
+        }
+    }
+}

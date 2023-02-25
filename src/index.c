@@ -89,6 +89,7 @@ int main(){
                     ajouter_livre(&mysql, nom_livre, nom_auteur, annee_parution, nbre_exemplaires);
                     break;
                 case 2:
+                    afficher_livres(&mysql);
                     break;
                 case 3:
                     break;
@@ -113,6 +114,5 @@ int main(){
         }
         return 0;
     }
-
     return 0;
 }
