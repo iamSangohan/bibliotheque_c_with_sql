@@ -35,4 +35,13 @@
         * @param id_livre ID du livre à supprimer
     */
     void supprimer_livre(MYSQL* conn, int id_livre);
+
+    /**
+        * @fn void emprunter_livre(MYSQL* conn, int id_livre_emprunt, int id_adherent_emprunt) 
+        * @brief Fonction d'emprunt d'un livre
+        * @param conn Pointeur de connexion à la base de données
+        * @param id_livre_emprunt ID du livre à emprunter
+        * @param id_adherent_emprunt ID de l'adherent qui emprunte le livre
+    */
+    void emprunter_livre(MYSQL* conn, int id_livre_emprunt, int id_adherent_emprunt);
 #endif // LIVRE_H

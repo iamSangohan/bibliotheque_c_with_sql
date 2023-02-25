@@ -1,6 +1,25 @@
+/**
+    * @file livre.c
+    * @author iamSangohan (MENSAH Luc Germain) 
+    * @version 0.1
+    * @date 2023-02-25
+    * Definition des fonctions de gestion des livres
+    * @copyright Copyright (c) 2023
+*/
+
 #include <stdio.h>
+#include <time.h>
 #include "livre.h"
 
+/**
+ * @brief Fonction d'ajout d'un livre dans la base de données
+ * On verifie d'
+ * @param conn 
+ * @param titre 
+ * @param auteur 
+ * @param annee 
+ * @param nbre_exemplaires_disponibles 
+ */
 void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5], int nbre_exemplaires_disponibles){
     char requete[1000];
     sprintf(requete, "INSERT INTO livres (titre, auteur, annee, nbre_exemplaires_disponibles) VALUES ('%s', '%s', '%s', %d)", titre, auteur, annee, nbre_exemplaires_disponibles);
@@ -60,5 +79,46 @@ void supprimer_livre(MYSQL* conn, int id_livre){
         }
     } else {
         printf("Le livre a été supprimé avec succès.\n");
+    }
+}
+
+void emprunter_livre(MYSQL* conn, int id_livre_emprunt, int id_adherent_emprunt){
+    time_t timestamp = time(NULL);
+    struct tm *date = localtime(&timestamp);
+    char date_str[11]; // Tableau de caractères pour stocker la date sous forme de chaîne
+    sprintf(date_str, "%04d-%02d-%02d", date->tm_year+1900, date->tm_mon+1, date->tm_mday);
+    
+
+    char requete1[1000];
+    char requete2[1000];
+    char requete3[1000];
+    sprintf(requete1, "UPDATE livres SET nbre_exemplaires_disponibles = nbre_exemplaires_disponibles - 1 WHERE id = %d", id_livre_emprunt);
+    sprintf(requete2, "INSERT INTO emprunts (id_livre, id_adherent, date_emprunt) VALUES (%d, %d, %s)", id_livre_emprunt, id_adherent_emprunt, date_str);
+    sprintf(requete3, "SELECT nbre_exemplaires_disponibles FROM livres WHERE id = %d", id_livre_emprunt);
+
+    if(mysql_query(conn, requete3)){
+        printf("Erreur lors de la vérification du nombre d'exemplaires disponibles : %s\n", mysql_error(conn));
+    }else if(mysql_num_rows(mysql_store_result(conn)) == 0){
+        printf("Le livre n'est plus en stock\n");
+    }else{
+        if(mysql_query(conn, requete2)){
+            if(mysql_errno(conn) == 1146){
+                if(mysql_query(conn, "CREATE TABLE emprunts (id INT NOT NULL AUTO_INCREMENT, id_livre INT NOT NULL, id_adherent INT NOT NULL, date_emprunt DATE NOT NULL, PRIMARY KEY (id), FOREIGN KEY (id_livre) REFERENCES livres(id), FOREIGN KEY (id_adherent) REFERENCES adherents(id))")){
+                    printf("Erreur lors de la création de la table emprunts : %s\n", mysql_error(conn));
+                }else{
+                    printf("Table emprunts créée avec succès\n");
+                    if(mysql_query(conn, requete2)){
+                        printf("Erreur lors de l'emprunt du livre : %s\n", mysql_error(conn));
+                    }else{
+                        printf("Livre emprunté avec succès\n");
+                    }
+                }
+            }else{
+                printf("Erreur lors de l'emprunt du livre : %s\n", mysql_error(conn));
+            }
+        }else{
+            mysql_query(conn, requete1);
+            printf("Livre emprunté avec succès\n");
+        }
     }
 }

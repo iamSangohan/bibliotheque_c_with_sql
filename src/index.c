@@ -162,6 +162,19 @@ int main(){
                     supprimer_adherent(&mysql, id_adherent);
                     break;
                 case 7:
+                    int id_livre_emprunt;
+                    int id_adherent_emprunt;
+                    printf("Quel adherent veut faire un emprunt ?\n");
+                    afficher_adherents(&mysql);
+                    printf("Saisissez l'ID de l'adherent : ");
+                    scanf("%d", &id_adherent_emprunt);
+
+                    printf("Quel livre voulez-vous emprunter ?\n");
+                    afficher_livres(&mysql);
+                    printf("Saisissez l'ID du livre : ");
+                    scanf("%d", &id_livre_emprunt);
+
+                    emprunter_livre(&mysql, id_livre_emprunt, id_adherent_emprunt);
                     break;
                 case 8:
                     break;
