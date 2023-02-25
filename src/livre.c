@@ -16,13 +16,15 @@ void ajouter_livre(MYSQL* conn, char titre[100], char auteur[100], char annee[5]
                     printf("Erreur lors de l'ajout du livre\n");
                     printf("%s\n", mysql_error(conn));
                 }else{
-                    printf("Livre ajouté avec succès\n");
+                    printf("Livre (%s de %s) ajouté avec succès\n", titre, auteur);
                 }
             }
         }else{
             printf("Erreur lors de l'ajout du livre\n");
             printf("%s\n", mysql_error(conn));
         }
+    }else{
+        printf("Livre (%s de %s) ajouté avec succès\n", titre, auteur);
     }
 }
 

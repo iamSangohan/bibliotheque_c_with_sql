@@ -21,4 +21,11 @@
      */
     void ajouter_adherent(MYSQL *conn, char nom[50], char prenom[100], char adresse[100], char telephone[15]);
 
+    /**
+        * @fn afficher_adherents
+        * @param conn Pointeur de connexion à la base de données
+        * @brief Fonction pour afficher les adherents
+     */
+    void afficher_adherents(MYSQL *conn);
+
 #endif // ADHERENT_H

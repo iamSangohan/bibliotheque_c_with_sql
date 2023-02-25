@@ -66,32 +66,52 @@ int main(){
                 printf("6- Supprimer un adherent\n");
                 printf("7- Emprunter un livre\n");
                 printf("8- Retourner un livre\n");
-                printf("9- Quitter\n"); 
+                printf("9- Quitter"); 
             }
 
             int option;
 
-            printf("--------------------\n");
+            printf("\n--------------------\n");
             printf("Option : ");
-            scanf("%d\n", &option);
+            scanf("%d", &option);
+            printf("--------------------\n");
 
             switch (option){
+                /**
+                    * Ajouter un livre
+                    * L'utilisateur va entrer les informations du livre
+                    * Puis on va appeler la fonction ajouter_livre()
+                    * Pour ajouter le livre à la base de données
+                */
                 case 1:
                     char nom_livre[100], nom_auteur[100], annee_parution[100];
                     int nbre_exemplaires;
                     printf("Nom du livre : ");
                     scanf("%s", nom_livre);
-                    printf("\nNom de l'auteur : ");
+                    printf("Nom de l'auteur : ");
                     scanf("%s", nom_auteur);
-                    printf("\nAnnée de parution : ");
+                    printf("Année de parution : ");
                     scanf("%s", annee_parution);
-                    printf("\nNombre d'exemplaires : ");
+                    printf("Nombre d'exemplaires : ");
                     scanf("%d", &nbre_exemplaires);
                     ajouter_livre(&mysql, nom_livre, nom_auteur, annee_parution, nbre_exemplaires);
                     break;
+
+                /**
+                    * Afficher la liste des livres
+                    * On va appeler la fonction afficher_livres()
+                    * Pour afficher la liste des livres
+                */
                 case 2:
                     afficher_livres(&mysql);
                     break;
+                
+                /**
+                    * Supprimer un livre
+                    * L'utilisateur va entrer l'ID du livre à supprimer
+                    * Puis on va appeler la fonction supprimer_livre()
+                    * Pour supprimer le livre de la base de données
+                */
                 case 3:
                     int id_livre;
                     afficher_livres(&mysql);
@@ -99,19 +119,33 @@ int main(){
                     scanf("%d", &id_livre);
                     supprimer_livre(&mysql, id_livre);
                     break;
+
+                /**
+                    * Ajouter un adherent
+                    * L'utilisateur va entrer les informations de l'adherent
+                    * Puis on va appeler la fonction ajouter_adherent()
+                    * Pour ajouter l'adherent à la base de données 
+                */    
                 case 4:
                     char nom_adherent[50], prenom_adherent[100], adresse_adherent[100], telephone_adherent[15];
                     printf("Nom de l'adherent : ");
                     scanf("%s", nom_adherent);
-                    printf("\nPrenom de l'adherent : ");
+                    printf("Prenom de l'adherent : ");
                     scanf("%s", prenom_adherent);
-                    printf("\nAdresse de l'adherent : ");
+                    printf("Adresse de l'adherent : ");
                     scanf("%s", adresse_adherent);
-                    printf("\nTelephone de l'adherent : ");
+                    printf("Telephone de l'adherent : ");
                     scanf("%s", telephone_adherent);
                     ajouter_adherent(&mysql, nom_adherent, prenom_adherent, adresse_adherent, telephone_adherent);
                     break;
+
+                /**
+                    * Afficher la liste des adherents
+                    * On va appeler la fonction afficher_adherents()
+                    * Pour afficher la liste des adherents
+                */
                 case 5:
+                    afficher_adherents(&mysql);
                     break;
                 case 6:
                     break;
